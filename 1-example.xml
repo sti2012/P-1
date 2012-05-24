@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<xml_api_reply version="1">
+	<weather module_id="0" tab_id="0" mobile_row="0" mobile_zipped="1" row="0" section="0" >
+		<forecast_information>
+x			<city data="Fuenlabrada, Madrid"/>
+			<postal_code data="fuenlabrada"/>
+			<latitude_e6 data=""/>
+			<longitude_e6 data=""/>
+x			<forecast_date data="2012-05-20"/>
+			<current_date_time data="1970-01-01 00:00:00 +0000"/>
+			<unit_system data="US"/>
+		</forecast_information>
+		<current_conditions>
+x			<condition data="Cloudy"/>
+			<temp_f data="57"/>
+x			<temp_c data="14"/>
+x			<humidity data="Humidity: 41%"/>
+			<icon data="/ig/images/weather/cloudy.gif"/>
+x			<wind_condition data="Wind: SW at 12 mph"/>
+		</current_conditions>
+		<forecast_conditions>
+x			<day_of_week data="Sun"/>
+x			<low data="43"/>
+x			<high data="63"/>
+			<icon data="/ig/images/weather/chance_of_rain.gif"/>
+x			<condition data="Chance of Rain"/>
+		</forecast_conditions>
+		<forecast_conditions>
+x			<day_of_week data="Mon"/>
+x			<low data="45"/>
+x			<high data="68"/>
+			<icon data="/ig/images/weather/mostly_sunny.gif"/>
+x			<condition data="Mostly Sunny"/>
+		</forecast_conditions>
+		<forecast_conditions>
+			<day_of_week data="Tue"/>
+			<low data="52"/>
+			<high data="75"/>
+			<icon data="/ig/images/weather/sunny.gif"/>
+			<condition data="Clear"/>
+		</forecast_conditions>
+		<forecast_conditions>
+			<day_of_week data="Wed"/>
+			<low data="57"/>
+			<high data="84"/>
+			<icon data="/ig/images/weather/sunny.gif"/>
+			<condition data="Clear"/>
+		</forecast_conditions>
+	</weather>
+</xml_api_reply>
