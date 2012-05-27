@@ -4,7 +4,7 @@
 	* 	librerias usadas:
 	* 		libcurl: 		Descarga una direccion de internet.
 	* 		libxml2: 		Obtiene los datos del XML.
-	* 		libgraph:		graphics.h de Turbo C en Linux	
+	* 		libgraph:		graphics.h de Turbo C en Linux.
 	*
 	* cURL descargara la prevision del tiempo de la API de google
 	* libxml2 obtendra los datos del archivo en formato XML
@@ -31,8 +31,8 @@
 // Editar nombres al terminar
 #include "1-curl_meteo.h"
 #include "1-file_meteo.h"
-#include "4-xml_meteo.h"
-#include "1-graph_meteo.h"
+#include "3-xml_meteo.h"				////////////////////////////////////////////// NO FUNCIONA XML
+// #include "1-graph_meteo.h"			// activar cuando funcione parsea
 
 void main(int argc, char const *argv[]) // Para permitir linea de comandos
 {
@@ -45,18 +45,17 @@ void main(int argc, char const *argv[]) // Para permitir linea de comandos
 		// * Arreglar *
 		printf("Dime el nombre de una ciudad\n");
 		fgets(ciudad,50,stdin);
-		sprintf(direccion, "http://www.google.es/ig/api?weather=%s", ciudad);
-		url = direccion;
+		sprintf(direccion, "http://www.google.com/ig/api?weather=%s", ciudad);
 	//////////////////////////////		printf("Test url 1: %s\n",direccion);
 	}
 	else // Si se abre el programa con argumentos
 	{
 		//url = "http://www.google.es/ig/api?weather=Fuenlabrada";
 		sprintf(direccion, "http://www.google.es/ig/api?weather=%s", *argv);
-		url = direccion;
 	//////////////////////////////		printf("Test url 2: %s\n",direccion);
 	}
 
+	url = direccion;
 
 	char *contenido = descarga(url);	// Funcion descarga en curl_meteo.h
 
@@ -64,9 +63,11 @@ void main(int argc, char const *argv[]) // Para permitir linea de comandos
 
 	guarda(contenido);					// Funcion guarda en file_meteo.h
 
-	parsea('1-tiempo.xml');				// Funcion parsea en xml_meteo.h
+	char *nombrearchivo = "tiempo.xml";										// corregido (?)
+
+	parsea(nombrearchivo);				// Funcion parsea en xml_meteo.h
 
 	// dibuja();						// Funcion dibuja en graph_meteo.h
 
-	return 0;
+	// return 0;
 }

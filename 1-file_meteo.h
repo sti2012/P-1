@@ -5,7 +5,7 @@ int guarda(char const *content)
 {
 	FILE* f;
 
-	f = fopen("1-tiempo.xml","w");
+	f = fopen("tiempo.xml","w");
 	if (f == NULL)
 	{
 		printf("Error al abrir el fichero");
@@ -17,6 +17,6 @@ int guarda(char const *content)
 	fflush(f);
 	fclose(f);
 
-	//////////////////////////////		printf("Test file\n%s\n", content);
-	
+			printf("Test file\n%s\n", content);
+
 }
