@@ -33,39 +33,10 @@
 //																	//
 //////////////////////////////////////////////////////////////////////
 
-struct meteo{
-	char ciudad;
-	char fecha;
-	char temperatura;
-	char humedad;
-	char viento;
-	char dia1;
-	char low1;
-	char high1;
-	char condicion1;
-	char dia2;
-	char low2;
-	char high2;
-	char condicion2;
-	char dia3;
-	char low3;
-	char high3;
-	char condicion3;
-	char dia4;
-	char low4;
-	char high4;
-	char condicion4;
-}Tiempo;
-
-
-int main(void)
+int dibuja(void)
 {
-	// extern struct tiempo;	// (?)
-	// SIN TERMINAR | FALTA
-	//	Tiempo.ciudad = 'test';
-
 	int salir = 1;
-
+/*
 	char ciudad[20] = "abc TEST 123";
 	char ciudadgraph[40];
 	char fecha[15] = "2012-05-26";
@@ -89,6 +60,33 @@ int main(void)
 	char low4[4];
 	char high4[4];
 	char condicion4[20];
+*/
+extern char *ciudad;
+extern char *fecha;
+extern char *condicion;
+extern char *temperatura;
+extern char *humedad;
+extern char *viento;
+extern char *dia1;
+extern char *low1;
+extern char *high1;
+extern char *condicion1;
+extern char *dia2;
+extern char *low2;
+extern char *high2;
+extern char *condicion2;
+extern char *dia3;
+extern char *low3;
+extern char *high3;
+extern char *condicion3;
+extern char *dia4;
+extern char *low4;
+extern char *high4;
+extern char *condicion4;
+	char ciudadgraph[40];
+	char fechagraph[30];
+
+
 
 	int gd=DETECT, gm=VGAMAX;
 	initgraph(&gd, &gm, 0);
@@ -163,13 +161,13 @@ int main(void)
 
 
 	// CIUDAD
-	
+
 		setcolor(BLUE);
 		sprintf(ciudadgraph, "CIUDAD: %s", ciudad);
 		outtextxy(90,70, ciudadgraph);
 
 
-	// DIA
+	// FECHA
 
 		setcolor(RED);
 		sprintf(fechagraph, "FECHA: %s", fecha);
@@ -181,6 +179,7 @@ int main(void)
 		setcolor(WHITE);
 		outtextxy(70,120, "TEMPERATURA");
 		outtextxy(115,140, "ACTUAL");
+
 		for (int i = 0; i < 5; ++i)
 		{
 			line(170,170+i,210,98+i);
@@ -188,93 +187,94 @@ int main(void)
 		}
 		for (int i = 0; i < 5; ++i)
 			rectangle(30+i,170+i,300-i,100-i);
+
 		outtextxy(240,130, temperatura);
 
 
 	// DIBUJO COND
-/*
+
 		setcolor(RED);
-		//outtextxy(75,170, "%s",condicion->tiempo);
+		outtextxy(75,200,condicion);
 
 		
 		// if...		dibujo sol
 		// else if...	dibujo nubes
 		// ...
-		
+
 
 
 	// HUMEDAD
 
 		setcolor(RED); 
-		outtextxy(75,170, "%s", humedad->tiempo);
+		outtextxy(400,140, humedad);
 
 	// VIENTO
 
 		setcolor(RED); 
-		outtextxy(75,170, "%s", viento->tiempo);
+		outtextxy(400,180, viento);
 
 //////////////////////////////////////////////////////////////////////
 
 	// DIA 1
 
 		setcolor(RED); 
-		outtextxy(75,170, "%s", dia1->tiempo);
+		outtextxy(70,270, dia1);
 
-		outtextxy(75,170, "%s", low1->tiempo);
-		outtextxy(75,170, "/");
-		outtextxy(75,170, "%s", high1->tiempo);
+		outtextxy(40,320, low1);
+		outtextxy(75,340, "/");
+		outtextxy(105,360, high1);
 
 
 		// COND
 
 			setcolor(RED); 
-			outtextxy(75,170, "%s", condicion1->tiempo);
+			outtextxy(40,400, condicion1);
 
 	// DIA 2
 
 		setcolor(RED); 
-		outtextxy(75,170, "%s", dia2->tiempo);
+		outtextxy(230,270, dia2);
 
-		outtextxy(75,170, "%s", low2->tiempo);
-		outtextxy(75,170, "/");
-		outtextxy(75,170, "%s", high2->tiempo);
+		outtextxy(200,320, low2);
+		outtextxy(235,340, "/");
+		outtextxy(265,360, high2);
 
 
 		//COND
 
 			setcolor(RED); 
-			outtextxy(75,170, "%s", condicion2->tiempo);
+			outtextxy(200,400, condicion2);
 
 	// DIA 3
 
 		setcolor(RED); 
-		outtextxy(75,170, "%s", dia3->tiempo);
+		outtextxy(390,270, dia3);
 
-		outtextxy(75,170, "%s", low3->tiempo);
-		outtextxy(75,170, "/");
-		outtextxy(75,170, "%s", high3->tiempo);
+		outtextxy(360,320, low3);
+		outtextxy(395,340, "/");
+		outtextxy(425,360, high3);
 
 
 		// COND
 
 			setcolor(RED); 
-			outtextxy(75,170, "%s", condicion3->tiempo);
+			outtextxy(360,400, condicion3);
 
 	// DIA 4
 
 		setcolor(RED); 
-		outtextxy(75,170, "%s", dia4->tiempo);
+		outtextxy(550,270, dia4);
 
-		outtextxy(75,170, "%s", low4->tiempo);
-		outtextxy(75,170, "/");
-		outtextxy(75,170, "%s", high4->tiempo);
+		outtextxy(515,320, low4);
+		outtextxy(550,340, "/");
+		outtextxy(580,360, high4);
 
 
 		// COND
 
 			setcolor(RED); 
-			outtextxy(75,170, "%s", condicion4->tiempo);
-*/
+			outtextxy(515,400, condicion4);
+
 
 	while (!kbhit());//
 		{
