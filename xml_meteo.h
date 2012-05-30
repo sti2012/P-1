@@ -30,7 +30,7 @@ getdoc (char *docname) {
 	doc = xmlParseFile(docname);
 	
 	if (doc == NULL ) {
-		fprintf(stderr,"Document not parsed successfully. \n");
+		fprintf(stderr,"Document not parsed successfully.\n");
 		return NULL;
 	}
 
@@ -171,7 +171,6 @@ int parsea(char *docname) {
 		xmlXPathFreeObject (result);
 	}
 
-
 	result = getnodeset (doc, "(/xml_api_reply/weather/forecast_conditions/day_of_week/@data)[2]");
 	if (result) {
 		nodeset = result->nodesetval;
@@ -211,7 +210,6 @@ int parsea(char *docname) {
 		}
 		xmlXPathFreeObject (result);
 	}
-
 
 	result = getnodeset (doc, "(/xml_api_reply/weather/forecast_conditions/day_of_week/@data)[3]");
 	if (result) {
@@ -253,7 +251,6 @@ int parsea(char *docname) {
 		xmlXPathFreeObject (result);
 	}
 
-
 	result = getnodeset (doc, "(/xml_api_reply/weather/forecast_conditions/day_of_week/@data)[4]");
 	if (result) {
 		nodeset = result->nodesetval;
@@ -293,7 +290,6 @@ int parsea(char *docname) {
 		}
 		xmlXPathFreeObject (result);
 	}
-
 
 	xmlFreeDoc(doc);
 	xmlCleanupParser();

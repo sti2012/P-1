@@ -14,60 +14,62 @@
 	*		Por medio de la linea de comandos.
 	*		Desde el propio programa.
 	* 
-	* 
-	* SSOO STI 2012. grupo 5                               28-Mayo-2012
+	* SSOO STI 2012. grupo 5 									30-Mayo-2012
 	* -------------------------------------------------------------------------
 */
 
+========= Instalacion: =========
 
+--------- Descargar LIBGRAPH
+	http://download.savannah.gnu.org/releases/libgraph/
 
-libgraph -lgraph
-libxml2 -lxml2
-libcurl -lcurl
+Antes de instalar libgraph ejecutar:
+	sudo apt-get install g++
+	sudo apt-get install libsbl-image1.2 libsdl-image1.2-dev guile-1.8-dev guile-1.8
 
+Extraer libgraph en una carpeta y desde la terminal ejecutar:
+	./configure
+	make
+	sudo make install
 
-LIBGRAPH
-http://download.savannah.gnu.org/releases/libgraph/
-
-http://itsanimesh.com/2009/01/08/c_graphics_in_linux/
-http://royitbhu.blogspot.com.es/2012/04/install-libgraph-library-in-gcc.html
-http://www.tumblr.com/tagged/graphics.h
-sudo apt-get install g++
-sudo apt-get install libsbl-image1.2 libsdl-image1.2-dev guile-1.8-dev guile-1.8
-
-./configure
-make
-sudo make install
-
-sudo cp /usr/local/lib/libgraph.* /usr/lib
+Al final ejecutar:
+	sudo cp /usr/local/lib/libgraph.* /usr/lib
 
 
 
-LIBXML2
-ftp://xmlsoft.org/libxml2/
+--------- Descargar LIBXML2
+	ftp://xmlsoft.org/libxml2/
 
-http://student.santarosa.edu/~dturover/?node=libxml2
-http://www.xmlsoft.org/examples/index.html
-http://www.xmlsoft.org/tutorial/ar01s04.html
-http://www.xmlsoft.org/tutorial/apc.html
+Extraer libxml2 en una carpeta y desde la terminal ejecutar:
+	./configure
+	make
+	sudo make install
 
-./configure
-make
-sudo make install
-
-sudo mkdir /usr/local/include/libxml
-sudo cp /usr/local/include/libxml2/libxml/* /usr/local/include/libxml
+Al final ejecutar:
+	sudo mkdir /usr/local/include/libxml
+	sudo cp /usr/local/include/libxml2/libxml/* /usr/local/include/libxml
 
 
 
-LIBCURL
-http://curl.haxx.se/
+--------- Descargar LIBCURL
+	http://curl.haxx.se/
 
-./configure 
-make
-sudo make install
+Extraer libcurl en una carpeta y desde la terminal ejecutar:
+	./configure 
+	make
+	sudo make install
 
 
+--------- COMPILAR
+
+Compilar con gcc con la siguiente linea de comandos
+	gcc -std=c99 meteo.c -o METEO -lcurl -lxml2 -lgraph
+
+
+
+libgraph	-lgraph
+libxml2		-lxml2
+libcurl		-lcurl
 
 
 {

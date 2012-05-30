@@ -23,7 +23,4 @@ int guarda(char const *content)
 	// Encode To UTF-8
 	char *encoder = "/bin/sh -c ./convert.sh";
 	system(encoder);
-
-	//		printf("Test file\n%s\n", content);
-
 }
