@@ -36,26 +36,26 @@ void main(int argc, char const *argv[]) // Para permitir linea de comandos
 
 	if (argc == 1) // Si se abre el programa sin argumentos
 	{
-		printf("* ------------------------------------------------------------------------- *\n");
-		printf("* meteo.c: Muestra la prevision de los 4 proximos dias de la ciudad deseada *\n");
-		printf("* ------------------------------------------------------------------------- *\n");
-		printf("\nNombre de la ciudad: ");
-		fgets(ciudad,50,stdin);
-		sprintf(direccion, "http://www.google.es/ig/api?weather=%s", ciudad);
+		printf(" * -------------------------------------------------------------------------- * \n");
+		printf(" * meteo.c: Muestra la prevision de los 4 proximos dias de la ciudad deseada. * \n");
+		printf(" * -------------------------------------------------------------------------- * \n");
+		printf("\n Nombre de la ciudad: ");
+		fgets(ciudad,50,stdin); // Nos pide una ciudad de maximo 50 caracteres
+		sprintf(direccion, "http://www.google.es/ig/api?weather=%s", ciudad); // Añade la ciudad a la url
 	}
-	else if (argc == 2)
+	else if (argc == 2) // Si la ciudad dada en los argumentos se compone de 1 sola palabra la añade a la url
 		sprintf(direccion, "http://www.google.es/ig/api?weather=%s", argv[1]);
-	else if (argc == 3)
+	else if (argc == 3) // Si la ciudad esta compuesta por 2 palabras
 		sprintf(direccion, "http://www.google.es/ig/api?weather=%s %s", argv[1], argv[2]);
-	else if (argc == 4)
+	else if (argc == 4) // Si la ciudad esta compuesta por 3 palabras
 		sprintf(direccion, "http://www.google.es/ig/api?weather=%s %s %s", argv[1], argv[2], argv[3]);
-	else
+	else // Ciudades compuestas por mas de 3 palabras (Existen?) producen error
 		printf("Por favor escribe una ciudad que este compuesta de maximo 3 palabras\n");
 
-	replaza(direccion);							// Funcion descarga en replace_meteo.h
+	replaza(direccion);	// Funcion descarga en replace_meteo.h
 	url = direccion;
-	char *contenido = descarga(direccion);		// Funcion descarga en curl_meteo.h
-	guarda(contenido);							// Funcion guarda en file_meteo.h
-	parsea(nombrearchivo);						// Funcion parsea en xml_meteo.h
-	dibuja();									// Funcion dibuja en graph_meteo.h
+	char *contenido = descarga(direccion); // Funcion descarga en curl_meteo.h
+	guarda(contenido); // Funcion guarda en file_meteo.h
+	parsea(nombrearchivo); // Funcion parsea en xml_meteo.h
+	dibuja(); // Funcion dibuja en graph_meteo.h
 }

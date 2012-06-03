@@ -1,7 +1,7 @@
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
 
-char *ciudad;
+char *ciudad; // Iniciamos todas las variables de los datos que queramos obtener
 char *fecha;
 char *condicion;
 char *temperatura;
@@ -25,11 +25,11 @@ char *high4;
 char *condicion4;
 
 xmlDocPtr
-getdoc (char *docname) {
+getdoc (char *docname) { // Obtiene el documento y lo intenta parsear
 	xmlDocPtr doc;
 	doc = xmlParseFile(docname);
 	
-	if (doc == NULL ) {
+	if (doc == NULL // Si no se parsea correctamente da error.
 		fprintf(stderr,"Document not parsed successfully.\n");
 		return NULL;
 	}
@@ -37,18 +37,18 @@ getdoc (char *docname) {
 	return doc;
 }
 
-xmlXPathObjectPtr
+xmlXPathObjectPtr // Obtiene el nodo y el contenido de la direccion xpath del documento.
 getnodeset (xmlDocPtr doc, xmlChar *xpath){
 	
 	xmlXPathContextPtr context;
 	xmlXPathObjectPtr result;
-
+// Si hay un error al recuperar un elemento de un nodo :
 	context = xmlXPathNewContext(doc);
 	if (context == NULL) {
 		printf("Error in xmlXPathNewContext\n");
 		return NULL;
 	}
-	result = xmlXPathEvalExpression(xpath, context);
+	result = xmlXPathEvalExpression(xpath, context); // Devuelve el contexto de la direccion xpath al resultado
 	xmlXPathFreeContext(context);
 	if (result == NULL) {
 		printf("Error in xmlXPathEvalExpression\n");
@@ -59,26 +59,27 @@ getnodeset (xmlDocPtr doc, xmlChar *xpath){
                 printf("No result\n");
 		return NULL;
 	}
+// Si no hay errores devuelve el resultado con el dato
 	return result;
 }
 
-int parsea(char *docname) {
+int parsea(char *docname) { // Funcion parsea con el nombre del documento (tiempo.xml)
 
 	xmlDocPtr doc;
 	xmlNodeSetPtr nodeset;
 	xmlXPathObjectPtr result;
 	int i;
 
-	doc = getdoc(docname);
-
+	doc = getdoc(docname); // Parsea el documento
+	// Para cada resultado que deseemos necesitaremos cambiar la direccion en notacion xpath de donde se encuentre el dato
 	result = getnodeset (doc, "/xml_api_reply/weather/forecast_information/city/@data");
-	if (result) {
-		nodeset = result->nodesetval;
+	if (result) { // Si existe el nodo
+		nodeset = result->nodesetval; // Se busca el dato dentro de los nodos
 		for (i=0; i < nodeset->nodeNr; i++) {
-			ciudad = xmlNodeListGetString(doc, nodeset->nodeTab[i]->xmlChildrenNode, 1);
-		printf("ciudad: %s\n", ciudad);
+			ciudad = xmlNodeListGetString(doc, nodeset->nodeTab[i]->xmlChildrenNode, 1); // Ciudad obtiene el dato en forma de string
+		printf("ciudad: %s\n", ciudad); // Imprimimos el valor obtenido (No es necesario)
 		}
-		xmlXPathFreeObject (result);
+		xmlXPathFreeObject (result); // Liberamos de memoria el resultado
 	}
 
 	result = getnodeset (doc, "/xml_api_reply/weather/forecast_information/forecast_date/@data");
@@ -130,7 +131,7 @@ int parsea(char *docname) {
 		}
 		xmlXPathFreeObject (result);
 	}
-
+	// Al existir diversos nodos con el mismo nombre para designar cada uno se añade ()[NUMERO] al final
 	result = getnodeset (doc, "(/xml_api_reply/weather/forecast_conditions/day_of_week/@data)[1]");
 	if (result) {
 		nodeset = result->nodesetval;
@@ -291,7 +292,7 @@ int parsea(char *docname) {
 		xmlXPathFreeObject (result);
 	}
 
-	xmlFreeDoc(doc);
-	xmlCleanupParser();
+	xmlFreeDoc(doc); // Liberamos el documento de la memoria
+	xmlCleanupParser(); // Limpiamos el parseador
 	return (1);
 }

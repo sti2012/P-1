@@ -1,4 +1,4 @@
-// http://curl.haxx.se/libcurl/c/getinmemory.html
+// Ejemplo: http://curl.haxx.se/libcurl/c/getinmemory.html
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -87,5 +87,5 @@ char *descarga(char const *url)
 	/* we're done with libcurl, so clean it up */ 
 	curl_global_cleanup();
  
-	return chunk.memory;
+	return chunk.memory; // Nos devuelve todos los datos obtenidos de la URL.
 }

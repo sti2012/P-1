@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <graphics.h>
+#include <graphics.h> // Libreria necesaria para los graficos
 
 //////////////////////////////////////////////////////////////////////
 //																	//
@@ -30,7 +30,7 @@
 
 int dibuja(void)
 {
-	extern char *ciudad;
+	extern char *ciudad; // Obtiene los datos de las variables externas contenidas en xml_meteo.h
 	extern char *fecha;
 	extern char *condicion;
 	extern char *temperatura;
@@ -64,17 +64,17 @@ int dibuja(void)
 		return 0;
 	}
 
-	int gd=DETECT, gm=VGAMAX;
-	initgraph(&gd, &gm, 0);
-	moveto(0, 0);
-	setbkcolor(0);
+	int gd=DETECT, gm=VGAMAX; // Se inician las caracteristicas de la pantalla de graficos
+	initgraph(&gd, &gm, 0); // Iniciamos los graficos
+	moveto(0, 0);	// No es necesario
+	setbkcolor(0);	// Cambia el color de fondo a 0 = BLACK
 
-	setcolor(4);
-	bar(2, 20, 637, 50);
-	setcolor(1);
-	bar(2, 250, 637, 290);
+	setcolor(4); // Cambia al color 4 = RED
+	bar(2, 20, 637, 50);	// Crea una barra para el titulo
+	setcolor(1); // Cambia al color 1 = BLUE
+	bar(2, 250, 637, 290);	// Crea una barra para las condiciones de los 4 proximos dias
 
-	setcolor(8);
+	setcolor(8); // Cambia al color 8 = GRAY
 	for (int i = 0; i < 5; ++i)
 		line(2,250+i,637,250+i);
 	for (int i = 0; i < 5; ++i)
@@ -160,7 +160,7 @@ int dibuja(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-	while (!kbhit());{}
-	closegraph();
-	return 0;
+	while (!kbhit()); // Mantiene el grafico abierto hasta que se pulsa una tecla (ENTER)
+	closegraph();	// Cierra el grafico
+	return 0;		// Volvemos a meteo.c
 }

@@ -2,13 +2,13 @@
 
 void replaza(char *str)
 {
-	while(*str) {
-		if(*str== ' ') 
+	while(*str) { // Mientras que haya letras
+		if(*str== ' ') // Si hay un espacio:
 		{
-			*str = '-';
+			*str = '-'; // Se cambia a guion
 		}
-		else 
-			;
-		str++;
+		else  // Si no:
+			; // No hacemos nada
+		str++; // Siguiente letra
 	}
 }
