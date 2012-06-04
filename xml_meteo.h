@@ -29,7 +29,7 @@ getdoc (char *docname) { // Obtiene el documento y lo intenta parsear
 	xmlDocPtr doc;
 	doc = xmlParseFile(docname);
 	
-	if (doc == NULL // Si no se parsea correctamente da error.
+	if (doc == NULL) { // Si no se parsea correctamente da error.
 		fprintf(stderr,"Document not parsed successfully.\n");
 		return NULL;
 	}
