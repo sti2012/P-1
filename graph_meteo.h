@@ -160,7 +160,11 @@ int dibuja(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+			getchar();
+			restorecrtmode();
+	/*
 	while (!kbhit()); // Mantiene el grafico abierto hasta que se pulsa una tecla (ENTER)
 	closegraph();	// Cierra el grafico
 	return 0;		// Volvemos a meteo.c
+	*/
 }
